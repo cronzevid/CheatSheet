@@ -73,6 +73,7 @@ echo "253:2 2194304" >! /sys/fs/cgroup/blkio/users/a0268545-shared3/blkio.thrott
 stdbuf -i0 -o0 -e0 tail -f /var/log/nginx/access.log | stdbuf -i0 -o0 -e0 grep projectene | awk '{print $6}' > ips.list
 
 # Process start time
+```
 ## ps -o etime= -p 25079 # [[dd-]hh:]mm:ss
 # 9-09:46:29
 
@@ -86,6 +87,7 @@ stdbuf -i0 -o0 -e0 tail -f /var/log/nginx/access.log | stdbuf -i0 -o0 -e0 grep p
 ## ps -o stime,time 25079
 #STIME     TIME
 #Jul18 00:10:26
+```
 
 # jq conditioning
 cat boxes.json | jq '.domains[] | select(.domain == "domains.com").boxes[] | select(.username == "username")'
