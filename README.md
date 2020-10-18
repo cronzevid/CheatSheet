@@ -134,3 +134,11 @@ iptables -I INPUT -j ACCEPT
 iptables -L --line-numbers
 iptables -D INPUT 9
 
+# OpenSSL
+echo | openssl s_client -showcerts -servername sni-domain.com -connect domain.com:443 2>/dev/null | openssl x509 -inform pem -noout -text
+openssl req -x509 -sha256 -nodes -days 365 -newkey rsa:2048 -keyout privkey.pem -out cert.pem
+openssl rsa -in privateKey.key -check
+openssl x509 -in certificate.crt -text -noout
+openssl pkcs12 -info -in keyStore.p12
+openssl x509 -noout -modulus -in certificate.crt | openssl md5
+openssl rsa -noout -modulus -in privateKey.key | openssl md5
